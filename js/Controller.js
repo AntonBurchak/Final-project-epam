@@ -88,9 +88,10 @@ class Controller {
                 Server.generatePostId();
                 data.id = JSON.parse(localStorage.getItem('id'));
 
+                const postID = data.id;
 
                 Server.connect('POST', Server.api.create, data).then(() => {
-                    Controller.redirect('http://localhost:3000/blog.html', 2000)
+                    Controller.redirect(`http://localhost:3000/post.html?id=${postID}`, 2000)
                 });
             } else {
                 Notification.error('Title is invalid.<br><span id="small">max length: 20<br>only these [ ,!,:,-,?,.,,]</span>')
