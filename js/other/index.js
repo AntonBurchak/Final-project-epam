@@ -22,7 +22,10 @@
           anchor.setAttribute('href', '#head')
           document.querySelector('*[href="#head"]').classList.add('active')
         } else {
-          document.querySelector('*[href="#head"]').classList.remove('active')
+          if(document.querySelector('*[href="#head"]')) {
+            document.querySelector('*[href="#head"]').classList.remove('active')
+          }
+          
 
         }
       }

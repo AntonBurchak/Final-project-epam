@@ -4793,3 +4793,10 @@ body {
   z-index: -1;
 }
 /*# sourceMappingURL=main.css.map */
+
+#small {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

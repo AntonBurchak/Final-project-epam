@@ -23,12 +23,11 @@ class Controller {
         });
         Controller.form.addEventListener('click', (e) => {
             const label = e.target.offsetParent;
-            // console.log(e)
-            // console.clear()
+
             const main_form = Controller.form.querySelector('.newPost__form');
             const qoute = Controller.form.querySelector('[name=quote]');
 
-            if (label.nodeName === 'LABEL') {
+            if (label && label.nodeName === 'LABEL') {
                 if (document.querySelector('.cloned')) document.querySelector('.cloned').remove()
                 const input = qoute.cloneNode();
                 if (label.getAttribute('for') === 'vid' || label.getAttribute('for') === 'aud') {
@@ -89,30 +88,27 @@ class Controller {
                 Server.generatePostId();
                 data.id = JSON.parse(localStorage.getItem('id'));
 
-                console.log(data);
-                Server.connect('POST', Server.api.create, data).then(data => console.log(data));
 
-                setTimeout(() => {
-                    window.location.replace('localhost:3000/blog.html');
-                }, 1000)
+                Server.connect('POST', Server.api.create, data).then(() => {
+                    Controller.redirect('http://localhost:3000/blog.html', 2000)
+                });
             } else {
-                Notification.error('Title is invalid')
+                Notification.error('Title is invalid.<br><span id="small">max length: 20<br>only these [ ,!,:,-,?,.,,]</span>')
             }
         });
     }
 
     static setScenaryProceedingPage() {
         if (Controller.getCurrentPage() == 'blog.html') {
-            // console.log('SUCCESS')
+
             Server.connect('GET', Server.api.list).then(data => {
                 console.log(data);
                 Parser.parseBlog('.blogPosts__wrapper', data);
             })
         }
         if (Controller.getCurrentPage().indexOf('post.html') !== -1) {
-            // console.log('its post page')
+
             const id = window.location.href.split('id=')[1];
-            // console.log(Server.api.find + id)
 
             Server.connect('GET', Server.api.find + id).then(data => {
                 console.log(data);
@@ -127,9 +123,12 @@ class Controller {
         const location = window.location.href;
         return location.slice(location.lastIndexOf('/') + 1, location.length);
     }
+
+    static redirect(href, ms) {
+        return setTimeout(() => document.location.href = href, ms)
+    }
 }
 Controller.listenTriggerClickOnAddPost();
 Controller.listenTriggerAddingPost();
 Controller.listenTriggerCloseForm();
 Controller.setScenaryProceedingPage();
-// console.log(Controller.getCurrentPage())
