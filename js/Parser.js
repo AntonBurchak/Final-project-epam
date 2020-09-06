@@ -14,21 +14,6 @@ class Parser {
       console.log(data);
    }
 
-   // static formatTextByParaghraph(text) {
-   //    const splitted = text.split('. ');
-   //    const groupBy = 5;
-   //    const result = '';
-   //    splitted.forEach((el, index) => {
-
-   //    })
-   //    // for (let i = 0; i < array.length; i++) {
-   //    //    const element = array[i];
-
-   //    // }
-   //    console.log(splitted)
-   //    return text;
-   // }
-
    static insertImage(item) {
       return `<div class="post__image">
                   <img src="${item.image}" alt="">

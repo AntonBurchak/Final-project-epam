@@ -13,10 +13,9 @@ class Controller {
                 const dateInput = Controller.form.querySelector('input[type=date]'),
                     date = new Date().getDate() < 10 ? '0' + (new Date().getDate()) : (new Date().getDate()),
                     year = new Date().getFullYear(),
-                    month = new Date().getMonth() < 10 ? '0' + (new Date().getMonth() + 1) : (new Date().getMonth() + 1),
-                    value = `${year}-${month}-${date}`;
+                    month = new Date().getMonth() < 10 ? '0' + (new Date().getMonth() + 1) : (new Date().getMonth() + 1);
 
-                dateInput.value = value;
+                dateInput.value = `${year}-${month}-${date}`;
 
 
             };

@@ -4803,3 +4803,8 @@ body {
   align-items: center;
   text-align: center;
 }
+.newPost__type label span {
+	padding: 5px 10px;
+    cursor: pointer;
+    display: block;
+}

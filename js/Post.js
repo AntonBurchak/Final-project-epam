@@ -47,9 +47,9 @@ class Post {
                </article>`
     }
 
-    get getType() {
-        return this._type;
-    }
+    // get getType() {
+    //     return this._type;
+    // }
 }
 
 class PostText extends Post {
