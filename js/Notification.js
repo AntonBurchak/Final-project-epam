@@ -10,7 +10,7 @@ class Notification {
                                 <p>${message}</p>
                                 <div class="close close-not"></div>
                             `
-        Notification.popup.innerHTML += errorHtml;
+        Notification.popup.innerHTML = errorHtml;
         Notification.popup.classList.remove('hide')
 
         console.error(message)
@@ -24,7 +24,7 @@ class Notification {
                                 <p>${message}</p>
                                 <div class="close close-not"></div>
                             `
-        Notification.popup.innerHTML += successHtml;
+        Notification.popup.innerHTML = successHtml;
         Notification.popup.classList.remove('hide')
 
         console.log(message)
